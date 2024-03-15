@@ -18,6 +18,5 @@ require("lazy").setup("plugins")
 
 
 --vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>')
 
 --vim.cmd('highlight Normal guibg=NONE ctermbg=NONE')
