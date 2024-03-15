@@ -18,5 +18,7 @@ vim.keymap.set('n', '<leader>]', ':BufferNext<enter>', {silent = true})
 
 vim.keymap.set('n', '<F7>', ':ToggleTerm direction=float <enter>', {silent = true})
 
-vim.keymap.set('n', 'A', ':vs <enter>', {silent = true})
+vim.keymap.set('n', '<leader>n', ':vs <enter>', {silent = true})
 vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>', {silent = true})
+
+vim.keymap.set('n', '<leader>h', ':split <enter>', {silent = true})
