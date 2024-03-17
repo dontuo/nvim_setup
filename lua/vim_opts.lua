@@ -15,6 +15,7 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
 vim.keymap.set('n', '<leader>[', ':BufferPrevious<enter>', {silent = true})
 vim.keymap.set('n', '<leader>]', ':BufferNext<enter>', {silent = true})
+vim.keymap.set('n', '<leader>q', ':BufferClose<enter>', {silent = true}) 
 
 vim.keymap.set('n', '<F7>', ':ToggleTerm direction=float <enter>', {silent = true})
 
