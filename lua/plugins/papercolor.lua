@@ -1,11 +1,10 @@
 return{
-   "NLKNguyen/papercolor-theme",
-    priority = 1001,
+    'NLKNguyen/papercolor-theme',
+    
     config = function()
-        vim.cmd.colorscheme "PaperColor"
-
-
+        vim.cmd("colorscheme PaperColor")
     end,
 
 }
+
 

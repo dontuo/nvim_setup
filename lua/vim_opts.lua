@@ -23,3 +23,8 @@ vim.keymap.set('n', '<leader>n', ':vs <enter>', {silent = true})
 vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>', {silent = true})
 
 vim.keymap.set('n', '<leader>h', ':split <enter>', {silent = true})
+
+vim.o.background = 'dark'
+-- Set the colorscheme to PaperColor
+vim.cmd("set termguicolors")
+vim.cmd('colorscheme PaperColor')
