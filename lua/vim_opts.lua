@@ -7,6 +7,7 @@ vim.cmd("")
 vim.g.mapleader = " "
 vim.keymap.set('n', '<C-s>', ':w <enter>', {silent = true})
 vim.keymap.set('n', '<C-q>', ':q <enter>', {silent = true})
+vim.keymap.set('n', '<C-t>', ':TransparentToggle <enter>', {silent = true})
 
 --lsp config
 
