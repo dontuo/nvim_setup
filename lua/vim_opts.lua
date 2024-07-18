@@ -19,13 +19,19 @@ vim.keymap.set('n', '<leader>]', ':BufferNext<enter>', {silent = true})
 vim.keymap.set('n', '<leader>q', ':BufferClose<enter>', {silent = true}) 
 
 vim.keymap.set('n', '<F7>', ':ToggleTerm direction=float <enter>', {silent = true})
+vim.keymap.set('n', '<F6>', ':ToggleTerm direction=horizontal <enter>', {silent = true})
+vim.keymap.set('n', '<C-`>', ':TermExec cmd="sh buildrun.sh" direction=horizontal<enter> go_back=0', {silent = true}) 
 
 vim.keymap.set('n', '<leader>n', ':vs <enter>', {silent = true})
-vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>', {silent = true})
-
 vim.keymap.set('n', '<leader>h', ':split <enter>', {silent = true})
 
-vim.o.background = 'dark'
+vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>', {silent = true})
+
+
+vim.keymap.set('n', '<leader>t', vim.lsp.buf.hover, {})
+vim.keymap.set('n', '<leader>;', vim.lsp.buf.definition, {})
+
+--vim.o.background = 'dark'
 -- Set the colorscheme to PaperColor
 vim.cmd("set termguicolors")
 vim.cmd('colorscheme PaperColor')
