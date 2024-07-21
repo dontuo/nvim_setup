@@ -31,6 +31,8 @@ vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>', {sil
 vim.keymap.set('n', '<leader>t', vim.lsp.buf.hover, {})
 vim.keymap.set('n', '<leader>;', vim.lsp.buf.definition, {})
 
+
+vim.keymap.set('n', '<C-0>', ":Telescope project <enter>", {silent = true})
 --vim.o.background = 'dark'
 -- Set the colorscheme to PaperColor
 vim.cmd("set termguicolors")
