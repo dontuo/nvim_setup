@@ -30,10 +30,24 @@ vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left <enter>', {sil
 
 vim.keymap.set('n', '<leader>t', vim.lsp.buf.hover, {})
 vim.keymap.set('n', '<leader>;', vim.lsp.buf.definition, {})
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
 
 vim.keymap.set('n', '<C-0>', ":Telescope project <enter>", {silent = true})
 
-vim.keymap.set('n', '<C-c>', '"+yi', {silent = true})
+--vim.keymap.set('n', '<C-c>', '"+y<enter>', {silent = true})
+
+--copy from clipboard
+vim.api.nvim_set_keymap('n', '<C-c>', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
+
+-- Paste from system clipboard
+vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('c', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
+-- Insert original character without triggering auto-pairs
+vim.api.nvim_set_keymap('i', '<C-r>', '<C-v>', { noremap = true, silent = true })
+
 --vim.o.background = 'dark'
 -- Set the colorscheme to PaperColor
 vim.cmd("set termguicolors")
@@ -49,4 +63,5 @@ if vim.g.neovide then
 	vim.g.neovide_transparency = 0.8
 	vim.g.transparency = 0.2
     vim.g.neovide_background_color = "#FFFFFF" .. alpha()
+    vim.g.neovide_cursor_vfx_mode = "railgun"
 end
