@@ -20,7 +20,7 @@ vim.keymap.set('n', '<leader>q', ':BufferClose<enter>', {silent = true})
 
 vim.keymap.set('n', '<F7>', ':ToggleTerm direction=float <enter>', {silent = true})
 vim.keymap.set('n', '<F6>', ':ToggleTerm direction=horizontal <enter>', {silent = true})
-vim.keymap.set('n', '<C-`>', ':TermExec cmd="sh buildrun.sh" direction=horizontal<enter> go_back=0', {silent = true}) 
+vim.keymap.set('n', '<C-`>', ':TermExec cmd="sh buildrun.sh" direction=horizontal<enter>', {silent = true}) 
 
 vim.keymap.set('n', '<leader>n', ':vs <enter>', {silent = true})
 vim.keymap.set('n', '<leader>h', ':split <enter>', {silent = true})
