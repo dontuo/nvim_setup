@@ -64,7 +64,7 @@ if vim.g.neovide then
     vim.g.neovide_scale_factor = 0.7
 
     vim.keymap.set('n', '<leader>-', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end, {silent = true})
-    vim.keymap.set('n', '<leader>+', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end, {silent = true})
+    vim.keymap.set('n', '<leader>=', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end, {silent = true})
     vim.g.neovide_window_blurred = true
 	vim.g.neovide_transparency = 0.8
 	vim.g.transparency = 0.2
