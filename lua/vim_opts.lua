@@ -53,12 +53,18 @@ vim.api.nvim_set_keymap('i', '<C-r>', '<C-v>', { noremap = true, silent = true }
 vim.cmd("set termguicolors")
 vim.cmd('colorscheme PaperColor')
 
+vim.keymap.set('i', '<C-a>', function() require('lsp_signature').toggle_float_win() end, { silent = false, noremap = true, desc = 'toggle signature' })
+
 
 if vim.g.neovide then
 	local alpha = function()
   		return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
 	end
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+    vim.g.neovide_scale_factor = 0.7
+
+    vim.keymap.set('n', '<leader>-', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end, {silent = true})
+    vim.keymap.set('n', '<leader>+', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end, {silent = true})
     vim.g.neovide_window_blurred = true
 	vim.g.neovide_transparency = 0.8
 	vim.g.transparency = 0.2
