@@ -5,11 +5,11 @@ return {
 		function()
 				local configs = require("nvim-treesitter.configs")
 
-				configs.setup({
-				    ensure_installed = {"c"},
-            sync_install = true,
-				    highlight = { enable = false},
-				    indent = { enable = false },  
-				})
+				--configs.setup({
+				    --ensure_installed = {},
+                    --sync_install = true,
+				    --highlight = { enable = false},
+				    --indent = { enable = false },  
+				--})
     end
 }

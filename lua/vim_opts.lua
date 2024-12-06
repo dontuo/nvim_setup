@@ -48,6 +48,12 @@ vim.api.nvim_set_keymap('c', '<C-v>', '<C-r>+', { noremap = true, silent = true 
 -- Insert original character without triggering auto-pairs
 vim.api.nvim_set_keymap('i', '<C-r>', '<C-v>', { noremap = true, silent = true })
 
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.api.nvim_exec('silent! normal! g`"zv', false)
+    end,
+})
 --vim.o.background = 'dark'
 -- Set the colorscheme to PaperColor
 vim.cmd("set termguicolors")
