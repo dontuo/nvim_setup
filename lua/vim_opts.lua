@@ -72,8 +72,9 @@ if vim.g.neovide then
     vim.keymap.set('n', '<leader>-', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end, {silent = true})
     vim.keymap.set('n', '<leader>=', function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end, {silent = true})
     vim.g.neovide_window_blurred = true
-	vim.g.neovide_transparency = 0.8
+	vim.g.neovide_opacity = 0.8
 	vim.g.transparency = 0.2
     vim.g.neovide_background_color = "#FFFFFF" .. alpha()
     vim.g.neovide_cursor_vfx_mode = "railgun"
+    vim.g.neovide_hide_mouse_when_typing = 1
 end
