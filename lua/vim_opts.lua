@@ -78,3 +78,19 @@ if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_hide_mouse_when_typing = 1
 end
+
+local diagnostics_active = true
+
+function ToggleDiagnostics()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.enable()
+    print("Diagnostics: ON")
+  else
+    vim.diagnostic.disable()
+    print("Diagnostics: OFF")
+  end
+end
+
+vim.keymap.set('n', '<leader>\\', ToggleDiagnostics, { noremap = true, silent = true })
+
