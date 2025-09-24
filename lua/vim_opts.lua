@@ -54,10 +54,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
         vim.api.nvim_exec('silent! normal! g`"zv', false)
     end,
 })
---vim.o.background = 'dark'
--- Set the colorscheme to PaperColor
-vim.cmd("set termguicolors")
-vim.cmd('colorscheme PaperColor')
 
 vim.keymap.set('i', '<C-a>', function() require('lsp_signature').toggle_float_win() end, { silent = false, noremap = true, desc = 'toggle signature' })
 
