@@ -1,4 +1,5 @@
 
+
 return {
   {
     "williamboman/mason.nvim",
@@ -10,67 +11,70 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = { "clangd", "jedi_language_server" },
+        ensure_installed = {
+          "clangd",
+          "jedi_language_server",
+        },
       }
     end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- Instead of requiring lspconfig, use the native LSP config API:
-      --- define (or extend) server config
+      local function setup_diagnostics(client, bufnr)
+        client.handlers["textDocument/publishDiagnostics"] =
+          vim.lsp.with(
+            vim.lsp.diagnostic.on_publish_diagnostics,
+            {
+              virtual_text = true,
+              signs = false,
+              underline = false,
+              update_in_insert = false,
+            }
+          )
+      end
+
+      -- C++
       vim.lsp.config("clangd", {
-        on_attach = function(client, bufnr)
-          client.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(
-              vim.lsp.diagnostic.on_publish_diagnostics,
-              {
-                virtual_text = true,
-                signs = false,
-                underline = false,
-                update_in_insert = false,
-              }
-            )
-        end,
-        -- you can also supply cmd, filetypes, root_dir, settings, etc.
+        on_attach = setup_diagnostics,
       })
 
+      -- Python
       vim.lsp.config("jedi_language_server", {
-        on_attach = function(client, bufnr)
-          client.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(
-              vim.lsp.diagnostic.on_publish_diagnostics,
-              {
-                virtual_text = true,
-                signs = false,
-                underline = false,
-                update_in_insert = false,
-              }
-            )
-        end,
-        -- additional settings if needed
+        on_attach = setup_diagnostics,
       })
+        
+      vim.lsp.config("qmlls", {cmd = { "qmlls6" }, 
+      filetypes = { "qml", "qmljs" }})
 
-      -- If you have a server that isn’t part of lspconfig's defaults:
+      -- LaTeX (example)
       vim.lsp.config("digestif", {
-        -- must provide at least `cmd`, `filetypes`, `root_dir` if not defined by default
-        -- e.g.:
         -- cmd = { "digestif", "--stdio" },
-        -- filetypes = { "digestif" },
-        -- root_dir = function(...) ...
+        -- filetypes = { "tex" },
+        -- root_dir = function(fname) return vim.fn.getcwd() end,
       })
 
-      -- Enable the servers you want, so they auto-start when filetype matches
-      vim.lsp.enable { "clangd", "jedi_language_server", "digestif" }
+      -- TypeScript / JavaScript
+      --[[vim.lsp.config("tsserver", {
+        on_attach = function(client, bufnr)
+          setup_stics(client, bufnr)
+          -- Example extra keymaps
+          local opts = { buffer = bufnr, silent = true }
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        end,
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx" },
+      })
+      --]]
 
-      -- Optionally, set up LspAttach for buffer-local mappings, etc.
+      -- enable them
+      vim.lsp.enable { "clangd", "jedi_language_server", "digestif", "qmlls", } --"tsserver",  }
+
+      -- optional autocommand for global mappings
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
           local bufnr = args.buf
-          -- e.g. set a keymap:
-          -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, silent = true })
-          -- you can also disable diagnostics override here, etc.
+          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, silent = true })
         end,
       })
     end,
